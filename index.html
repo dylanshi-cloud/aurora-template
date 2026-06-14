@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aurora — Flowing gradient HTML template for creative brands." />
+  <title>Aurora — Gradient Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0B0A1A;--text:#E8E4F0;--text-light:#A89FBF;--accent:#7C3AED;--accent2:#EC4899;--accent3:#06B6D4;--font:'Inter',sans-serif;--font-display:'Space Grotesk',sans-serif;--ease:cubic-bezier(0.22,1,0.36,1)}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;background:var(--bg)}
+    body{font-family:var(--font);font-weight:300;font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg);overflow-x:hidden}
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem)}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+
+    /* Aurora Background */
+    .aurora-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+    .aurora-bg__layer{position:absolute;width:200%;height:200%;top:-50%;left:-50%;animation:auroraSpin 20s linear infinite;opacity:0.15}
+    .aurora-bg__layer:nth-child(1){background:conic-gradient(from 0deg,#7C3AED,#EC4899,#06B6D4,#7C3AED);animation-duration:25s}
+    .aurora-bg__layer:nth-child(2){background:conic-gradient(from 90deg,#06B6D4,#8B5CF6,#F472B6,#06B6D4);animation-duration:30s;opacity:0.1}
+    .aurora-bg__layer:nth-child(3){background:radial-gradient(ellipse at 50% 50%,rgba(124,58,237,0.3),transparent 70%);width:100%;height:100%;top:0;left:0;animation:pulse 4s ease-in-out infinite}
+    @keyframes auroraSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.6}}
+
+    /* Nav */
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.2rem 0}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between}
+    .nav__logo{font-family:var(--font-display);font-size:1.3rem;font-weight:500;letter-spacing:-0.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav__links{display:flex;gap:2rem}
+    .nav__links a{font-size:0.85rem;color:var(--text-light);transition:color 0.3s}
+    .nav__links a:hover{color:var(--text)}
+
+    /* Hero */
+    .hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 0 4rem}
+    .hero__badge{display:inline-block;padding:0.4rem 1rem;border:1px solid rgba(255,255,255,0.1);border-radius:100px;font-size:0.75rem;color:var(--text-light);margin-bottom:1.5rem;backdrop-filter:blur(12px)}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem}
+    .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{font-size:clamp(1rem,1.3vw,1.2rem);color:var(--text-light);max-width:500px;margin:0 auto 2.5rem}
+    .btn{display:inline-block;padding:0.9rem 2.2rem;border-radius:100px;font-size:0.9rem;font-weight:500;transition:all 0.3s var(--ease);border:none;cursor:pointer;text-decoration:none}
+    .btn--primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+    .btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,0.3)}
+    .btn--outline{border:1px solid rgba(255,255,255,0.2);color:var(--text)}
+    .btn--outline:hover{background:rgba(255,255,255,0.05)}
+
+    /* Sections common */
+    section{position:relative;z-index:1;padding:clamp(4rem,8vw,7rem) 0}
+    .section-header{text-align:center;margin-bottom:3.5rem}
+    .section-tag{display:inline-block;padding:0.3rem 0.8rem;border:1px solid rgba(255,255,255,0.08);border-radius:100px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);margin-bottom:1rem;backdrop-filter:blur(8px)}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;margin-bottom:0.8rem;letter-spacing:-0.02em}
+    .section-sub{color:var(--text-light);max-width:500px;margin:0 auto}
+
+    /* Showcase */
+    .showcase__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .aurora-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:2rem;transition:all 0.4s var(--ease);backdrop-filter:blur(12px)}
+    .aurora-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,0.2);background:rgba(255,255,255,0.05)}
+    .aurora-card__icon{font-size:2rem;margin-bottom:1rem}
+    .aurora-card__title{font-family:var(--font-display);font-size:1.1rem;font-weight:500;margin-bottom:0.5rem}
+    .aurora-card__text{font-size:0.85rem;color:var(--text-light);line-height:1.6}
+    .aurora-card--wide{grid-column:span 2}
+
+    /* Features */
+    .features__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+    .feat{text-align:center;padding:2rem}
+    .feat__num{font-family:var(--font-display);font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:0.8rem}
+    .feat__title{font-family:var(--font-display);font-size:1.1rem;font-weight:500;margin-bottom:0.4rem}
+    .feat__text{font-size:0.85rem;color:var(--text-light);line-height:1.6}
+
+    /* Pricing */
+    .pricing__card{max-width:400px;margin:0 auto;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:3rem;text-align:center;backdrop-filter:blur(12px)}
+    .pricing__price{font-family:var(--font-display);font-size:3.5rem;font-weight:700;margin:1.5rem 0}
+    .pricing__price span{font-size:1rem;color:var(--text-light);font-weight:300}
+    .pricing__features{list-style:none;margin-bottom:2rem}
+    .pricing__features li{padding:0.5rem 0;color:var(--text-light)}
+    .pricing__btn{width:100%}
+
+    /* Contact */
+    .contact__card{max-width:500px;margin:0 auto;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:3rem;backdrop-filter:blur(12px)}
+    .contact__form{display:flex;gap:0.75rem}
+    .contact__input{flex:1;padding:0.8rem 1.2rem;border:1px solid rgba(255,255,255,0.1);border-radius:100px;background:rgba(255,255,255,0.03);color:var(--text);font-size:0.9rem;outline:none;transition:border-color 0.3s}
+    .contact__input:focus{border-color:var(--accent)}
+    .contact__input::placeholder{color:var(--text-light)}
+
+    /* Footer */
+    .footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,0.04);color:var(--text-light);font-size:0.85rem;text-align:center}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+    .reveal--visible{opacity:1;transform:translateY(0)}
+
+    /* Responsive */
+    @media(max-width:768px){.showcase__grid,.features__grid{grid-template-columns:1fr}.aurora-card--wide{grid-column:span 1}.contact__form{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="aurora-bg">
+    <div class="aurora-bg__layer"></div>
+    <div class="aurora-bg__layer"></div>
+    <div class="aurora-bg__layer"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">Aurora</a>
+      <ul class="nav__links">
+        <li><a href="#showcase">Work</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__badge">✦ Gradient Design System</div>
+      <h1>Colors that <span>flow</span><br/>like light.</h1>
+      <p>A premium gradient-first template for brands that live in color.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="#showcase" class="btn btn--primary">View Showcase</a>
+        <a href="#pricing" class="btn btn--outline">Get Aurora</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="showcase">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Showcase</span>
+        <h2 class="section-title">Built with light.</h2>
+        <p class="section-sub">Every element is designed to work with — not against — the gradient canvas.</p>
+      </div>
+      <div class="showcase__grid">
+        <div class="aurora-card aurora-card--wide">
+          <div class="aurora-card__icon">🌊</div>
+          <h3 class="aurora-card__title">Fluid Gradients</h3>
+          <p class="aurora-card__text">Rotating conic gradients create an ever-shifting color canvas. The background breathes while your content stays sharp.</p>
+        </div>
+        <div class="aurora-card">
+          <div class="aurora-card__icon">✦</div>
+          <h3 class="aurora-card__title">Glass Layers</h3>
+          <p class="aurora-card__text">Frosted panels with backdrop-filter float above the gradient, keeping text readable.</p>
+        </div>
+        <div class="aurora-card">
+          <div class="aurora-card__icon">◆</div>
+          <h3 class="aurora-card__title">Gradient Text</h3>
+          <p class="aurora-card__text">Headlines and accents use the same color palette — the gradient flows through typography.</p>
+        </div>
+        <div class="aurora-card">
+          <div class="aurora-card__icon">◈</div>
+          <h3 class="aurora-card__title">Dark-first</h3>
+          <p class="aurora-card__text">Designed for dark backgrounds. Colors pop against the deep space canvas.</p>
+        </div>
+        <div class="aurora-card">
+          <div class="aurora-card__icon">◇</div>
+          <h3 class="aurora-card__title">Zero JS</h3>
+          <p class="aurora-card__text">All gradient animations are pure CSS. No JavaScript overhead for the core experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Features</span>
+        <h2 class="section-title">Simple & beautiful.</h2>
+        <p class="section-sub">Everything you need to launch a stunning brand site.</p>
+      </div>
+      <div class="features__grid">
+        <div class="feat"><div class="feat__num">01</div><h3 class="feat__title">Pure CSS Aurora</h3><p class="feat__text">Conic gradient animation runs entirely in CSS — GPU accelerated, no jank.</p></div>
+        <div class="feat"><div class="feat__num">02</div><h3 class="feat__title">Responsive</h3><p class="feat__text">Perfect on every screen. The gradient canvas scales naturally.</p></div>
+        <div class="feat"><div class="feat__num">03</div><h3 class="feat__title">Customizable</h3><p class="feat__text">Change the gradient colors in CSS variables — one edit transforms the entire site.</p></div>
+        <div class="feat"><div class="feat__num">04</div><h3 class="feat__title">Zero Dependencies</h3><p class="feat__text">Pure HTML + CSS. No frameworks, no npm, no build tools.</p></div>
+        <div class="feat"><div class="feat__num">05</div><h3 class="feat__title">Documentation</h3><p class="feat__text">Full customization guide included with purchase.</p></div>
+        <div class="feat"><div class="feat__num">06</div><h3 class="feat__title">Fast Delivery</h3><p class="feat__text">GitHub Pages ready. Deploy in under a minute.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pricing</span>
+        <h2 class="section-title">Get Aurora.</h2>
+        <p class="section-sub">One purchase. Use forever.</p>
+      </div>
+      <div class="pricing__card">
+        <div style="font-size:2rem;margin-bottom:0.5rem">✦</div>
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:500">Aurora Pro</h3>
+        <div class="pricing__price">¥199 <span>$29</span></div>
+        <ul class="pricing__features">
+          <li>✓ Full HTML + CSS source</li>
+          <li>✓ Aurora gradient system</li>
+          <li>✓ Responsive design</li>
+          <li>✓ Customization guide</li>
+          <li>✓ Lifetime updates</li>
+        </ul>
+        <a href="https://github.com/dylanshi-cloud/aurora-template#-pricing" class="btn btn--primary pricing__btn">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact__card">
+        <h2 class="section-title" style="text-align:center;font-size:1.8rem">Get in touch</h2>
+        <p style="text-align:center;color:var(--text-light);margin-bottom:2rem">Questions about Aurora? We're here.</p>
+        <form class="contact__form">
+          <input type="email" class="contact__input" placeholder="Your email" required />
+          <button type="submit" class="btn btn--primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="font-family:var(--font-display);font-size:1.2rem;font-weight:500;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Aurora</p>
+      <p style="margin-top:0.3rem">Premium gradient template. Made with intention.</p>
+      <p style="margin-top:1rem;font-size:0.75rem">&copy; 2026 Aurora Template</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
